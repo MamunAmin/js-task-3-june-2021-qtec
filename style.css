@@ -36,7 +36,7 @@ body {
     color: black;
     opacity: .2;
 }
-.items {
+#items {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -44,14 +44,18 @@ body {
     margin-bottom: 3.5rem;
 }
 .item {
-    margin: 1rem 0 0 1rem;
+    margin: 1rem 0 0 .9rem;
     width: 119px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 4px 4px  #00000030;
+    cursor: pointer;
 }
 .item:hover {
     box-shadow: 0 4px 8px  #00000030, 0 6px 20px #00000030;
+}
+.item:active {
+    opacity: .6;
 }
 .image {
     width: 119px;
