@@ -105,7 +105,7 @@ hr {
     margin-right: 1.5rem;
     border-radius: 5px;
     cursor:pointer;
-    box-shadow: 0 4px 8px  #00000030;
+    box-shadow: 0 2px 4px  #00000030;
 }
 .btn:hover {
     box-shadow: 0 4px 8px  #00000030, 0 6px 20px #00000030;
@@ -118,19 +118,44 @@ hr {
   min-height: 98vh;
   width: 100%;
 }
-/*
-footer {
-    position:fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    display: block;
-    background-color: rgb(66, 64, 54);
-    line-height: 5vh;
-    color: white;
-    text-align: center;
+
+.right-topper, .right-box {
+    display:flex;
+    flex-direction: row;
 }
-*/
+.cart-text {
+    font-weight: 700;
+}
+.right-img {
+    height: 55px;
+    width: 55px;
+    border: 1px solid #b8b8b860;
+    border-radius: 4px;
+}
+.right-name, .right-price{
+    font-weight: 900;
+    font-size: 20px;
+    margin: auto 0 auto 1rem;
+}
+.right-price {
+    margin: auto 1rem auto auto;
+}
+.del {
+    margin: auto 0;
+}
+.del:hover {
+    color: #da2121;
+    cursor: pointer;
+}
+.test {
+    width: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 32px;
+    border: 2px solid #666;
+}
+
 /**Responsive**/
 @media only screen and (max-width: 90px) {
     .container {
