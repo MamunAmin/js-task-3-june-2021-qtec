@@ -171,6 +171,7 @@ hr {
     background-color: #fff;
     margin: 0 2vh 3vh 1.5vh;
     margin: 0 2vh 3vh 1.5vh;
+    opacity: 0;
 }
 
 .calc {

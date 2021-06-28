@@ -69,6 +69,9 @@ function showRightItems() {
         e.removeChild(child);
         child = e.lastElementChild;
     }
+    let bottom = document.getElementsByClassName("right-bottom");
+    if(clickedItems.length) bottom[0].style.opacity = 1;
+    else bottom[0].style.opacity = 0;
     clickedItems.forEach(clickedItem => {
         let itemId = Object.keys(clickedItem)[0];
         let itemValue = Object.values(clickedItem)[0];
@@ -124,10 +127,6 @@ function showRightItems() {
 
 function itemRemover(evnt) {
     let itemIndex = evnt.currentTarget.delItemId;
-    console.log(itemIndex);
-    //clickedItems = clickedItems.slice(itemIndex);
     clickedItems = clickedItems.filter(person => itemIndex != Object.keys(person)[0]);
-    //clickedItems.slice(0, itemIndex);
-    console.log(clickedItems);
     showRightItems();
 }
