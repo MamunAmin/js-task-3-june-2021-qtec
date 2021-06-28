@@ -42,27 +42,77 @@ products.forEach(product => {
 let clickedItems = [];
 function rightItemsGenerator(evnt) {
     let itemID = evnt.currentTarget.clickedItemId;
+    let isExist = false;
 
-    for(let i = 0; i < clickedItems.length; i++) {
-        
+    for(var i = 0; i < clickedItems.length; i++) {
+        if(Object.keys(clickedItems[i])[0] == itemID) {
+            isExist = true;
+            break;
+        } 
     }
-
-
-    if("$(itemId)" in clickedItems)
-    {
-        console.log("hii");   
-        
+    if(isExist) {
+        clickedItems[i][itemID] =  Object.values(clickedItems[i])[0] += 1;
+        console.log("Exist");
     }
-    //clickedItemId[itemID] = itemID;
-    clickedItems.push( {[itemID]: itemID} );
-    console.log(clickedItems);   
+    else   {
+        clickedItems.push( {[itemID]: 1} );
+        console.log("Not Exist");
+    }
+    console.log(clickedItems);
+    isExist = false;
+    showRightItems();
 }
-/*
-//document.getElementById("nam").innerHTML = evnt.currentTarget.clickedItemId;
-$('input[type=checkbox]').each(function(i, e) {
-    stuff['row'+i] = e.checked;
-})
-stuff.push( {'name':$(this).attr('checked')} );
-let margin = document.getElementsByClassName("newDiv");
-margin[i].style.marginLeft = "10px";
-*/
+
+function showRightItems() {
+    let finalPrice = 0;
+    let e = document.querySelector("#right-container");
+    let child = e.lastElementChild; 
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    }
+    clickedItems.forEach(clickedItem => {
+        let itemId = Object.keys(clickedItem)[0];
+        let itemValue = Object.values(clickedItem)[0];
+        let subPrice = Object.values(products[itemId-1])[2] * itemValue;
+        finalPrice += subPrice;
+
+        var newDiv = document.createElement("div");
+        newDiv.id = "right-box";
+        document.getElementById("right-container").appendChild(newDiv);
+        
+        let hr = document.createElement("hr");
+        hr.className = "right-devider";
+        document.getElementById("right-container").appendChild(hr);
+        
+        let rightImage = document.createElement("img");
+        rightImage.className = "right-img";
+        rightImage.src = Object.values(products[itemId-1])[3];
+
+        let number = document.createElement("div");
+        let num = document.createTextNode(itemValue); /***/
+        number.className = "number";
+        number.appendChild(num);
+        
+        let rightName = document.createElement("p");
+        let text = document.createTextNode(Object.values(products[itemId-1])[1]);
+        rightName.className = "right-name";
+        rightName.appendChild(text);
+        
+        let rightPrice = document.createElement("p");
+        let textPrice = document.createTextNode("BDT "+ subPrice);
+        rightPrice.className = "right-price";
+        rightPrice.appendChild(textPrice);
+
+        let delIcon = document.createElement("span");
+        let textDel = document.createTextNode("delete_forever");
+        delIcon.className = "material-icons del";
+        delIcon.appendChild(textDel);
+
+        newDiv.appendChild(rightImage);
+        newDiv.appendChild(number);
+        newDiv.appendChild(rightName);
+        newDiv.appendChild(rightPrice);
+        newDiv.appendChild(delIcon);
+    });
+}

@@ -118,7 +118,7 @@ hr {
   width: 100%;
 }
 
-.right-topper, .right-box {
+.right-topper, #right-box {
     display:flex;
     flex-direction: row;
 }
@@ -158,6 +158,10 @@ hr {
     border: 2px solid #54B59F;
     background-color: #54B59F;
 }
+.right-devider {
+    margin-top: 4px;
+    opacity: .1;
+}
 .right-bottom {
     position: fixed;
     right: 0;
@@ -185,6 +189,7 @@ hr {
     background-color: #7872B9;
     color: #fff;
     padding: 7px;
+    cursor: pointer;
 }
 .pay-button:hover {
     font-size: 17px;
