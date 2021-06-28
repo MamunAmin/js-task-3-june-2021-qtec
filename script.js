@@ -51,14 +51,11 @@ function rightItemsGenerator(evnt) {
         } 
     }
     if(isExist) {
-        clickedItems[i][itemID] =  Object.values(clickedItems[i])[0] += 1;
-        console.log("Exist");
+        clickedItems[i][itemID] =  Object.values(clickedItems[i])[0] += 1; 
     }
     else   {
         clickedItems.push( {[itemID]: 1} );
-        console.log("Not Exist");
     }
-    console.log(clickedItems);
     isExist = false;
     showRightItems();
 }
@@ -66,7 +63,8 @@ function rightItemsGenerator(evnt) {
 function showRightItems() {
     let finalPrice = 0;
     let e = document.querySelector("#right-container");
-    let child = e.lastElementChild; 
+    let child = e.lastElementChild;
+    let removeItemIndex = 0;
     while (child) {
         e.removeChild(child);
         child = e.lastElementChild;
@@ -107,6 +105,9 @@ function showRightItems() {
         let delIcon = document.createElement("span");
         let textDel = document.createTextNode("delete_forever");
         delIcon.className = "material-icons del";
+        delIcon.addEventListener("click", itemRemover, false);
+        //delIcon.delItemId = removeItemIndex;
+        delIcon.delItemId = itemId;
         delIcon.appendChild(textDel);
 
         newDiv.appendChild(rightImage);
@@ -114,5 +115,19 @@ function showRightItems() {
         newDiv.appendChild(rightName);
         newDiv.appendChild(rightPrice);
         newDiv.appendChild(delIcon);
+        removeItemIndex++;
     });
+    document.getElementById("rate1").innerHTML = "BDT " + finalPrice;
+    document.getElementById("rate2").innerHTML = "BDT " + finalPrice;
+    document.getElementById("rate3").innerHTML = "BDT " + finalPrice;
+}
+
+function itemRemover(evnt) {
+    let itemIndex = evnt.currentTarget.delItemId;
+    console.log(itemIndex);
+    //clickedItems = clickedItems.slice(itemIndex);
+    clickedItems = clickedItems.filter(person => itemIndex != Object.keys(person)[0]);
+    //clickedItems.slice(0, itemIndex);
+    console.log(clickedItems);
+    showRightItems();
 }
