@@ -199,9 +199,36 @@ hr {
 }
 
 /**Responsive**/
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 880px) {
+    .left {
+        flex-shrink: 0;
+        flex-basis: 50%;
+    }
+    .bottom {
+        position: relative;
+        width: 98%;
+    }
+    .btns {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .btn {
+        margin-top: 5px;
+    }
+    .right-bottom {
+        width: 45%;
+    }
+}
+@media only screen and (max-width: 500px) {
     .container {
-        /* it place the items in vertical direction */
       flex-direction: column;
+    }
+    .right {
+        min-height: 60px;
+    }
+    .right-bottom {
+        position: relative;
+        width: 90%;
     }
 }
