@@ -67,7 +67,7 @@ function itemRemover(evnt) {
 function showRightItems() {
     let finalPrice = 0;
     //removing all items to avoid repetition
-    let elmnt = document.querySelector("#right-container");
+    const elmnt = document.querySelector("#right-container");
     let child = elmnt.lastElementChild;
     while (child) {
         elmnt.removeChild(child);
